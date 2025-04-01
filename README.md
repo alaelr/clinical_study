@@ -4,21 +4,47 @@ This project is a simple ETL (Extract, Transform, Load) pipeline for processing 
 
 ## Project Structure
 
-TEST - DATA ENGINEERING PROJECT/
-│── data/                      # Raw CSV data files
-│   ├── patient_demographics.csv
-│   ├── patient_lab_results.csv
-│   ├── patient_medications.csv
-│   ├── patient_visits.csv
-│   ├── physician_assignments.csv
-│── output/                    # Processed output files
-│── scripts/                   # Python scripts
-│   ├── database.py
-│   ├── etl.py                 # Main ETL script
-│── venv/                      # Virtual environment (if used)
-│── README.md                  # Documentation
-│── requirements.txt            # Python dependencies
-
+test_data_engineer/
+│
+├── .env # Environment variables (database credentials)
+├── .gitignore # Files to exclude from version control
+├── requirements.txt # Python dependencies
+│
+├── airflow/ # Airflow DAGs directory
+│ └── dags/
+│ └── clinical_etl_pipeline.py # Main Airflow pipeline
+│
+├── data/ # Raw input data files
+│ ├── patient_demographics.csv
+│ ├── patient_lab_results.csv
+│ ├── patient_medications.csv
+│ ├── patient_visits.csv
+│ └── physician_assignments.csv
+│
+├── output/ # Processed output files
+│ └── cleaned_patient_data.csv
+│
+├── scripts/ # Data processing scripts
+│ ├── init.py # Python package marker
+│ ├── config.py # Configuration settings
+│ ├── etl.py # ETL transformation logic
+│ ├── load_postgresql.py # PostgreSQL loader
+│ ├── migrate_to_supabase.py # Supabase migration
+│ ├── query_executor.py # Query execution helper
+│ ├── query_postgresql.py # PostgreSQL query interface
+│ ├── schema_postgresql.sql # Database schema definition
+│ └── test_queries.py # Database tests
+│
+├── sql_queries/ # Business intelligence queries
+│ ├── sort_patient_by_diagnosis.sql
+│ ├── visits_for_patient.sql
+│ └── visits_per_month.sql
+│
+├── supabase/ # Supabase-specific files
+│ ├── DIFFERENCES.md # PostgreSQL vs Supabase notes
+│ └── README.md # Supabase setup guide
+│
+└── .pytest_cache/ # Pytest cache (auto-generated)
 
 ## Setup Instructions
 
@@ -39,11 +65,35 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 
+## Create airflow directory if it doesn't exist
+mkdir -p ~/airflow
+
+## Set the AIRFLOW_HOME environment variable
+export AIRFLOW_HOME=~/airflow
+
+## Initialize the database
+airflow db init
+
+## Create a user (admin credentials)
+airflow users create \
+    --username admin \
+    --firstname Admin \
+    --firstname User \
+    --role Admin \
+    --email admin@example.com \
+    --password admin
+
+## lunch airlfow
+airlfow webserver -p 8080
+airflow scheduler 
+
+
 ## Code running
 
-python scripts/etl.py
+python scripts/query_executor.py
 
 
 ## Output
 
 output/cleaned_patient_data.csv
+output/sort_pation_by_diagnosis.csv
