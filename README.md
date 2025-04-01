@@ -65,16 +65,16 @@ pip install -r requirements.txt
 
 ## Airlfow Setup
 
-# Create airflow directory if it doesn't exist
+### Create airflow directory if it doesn't exist
 mkdir -p ~/airflow
 
-# Set the AIRFLOW_HOME environment variable
+### Set the AIRFLOW_HOME environment variable
 export AIRFLOW_HOME=~/airflow
 
-# Initialize the database
+### Initialize the database
 airflow db init
 
-# Create a user (admin credentials)
+### Create a user (admin credentials)
 airflow users create \
     --username admin \
     --firstname Admin \
@@ -83,7 +83,7 @@ airflow users create \
     --email admin@example.com \
     --password admin
 
-# lunch airlfow
+### lunch airlfow
 airlfow webserver -p 8080
 airflow scheduler 
 
