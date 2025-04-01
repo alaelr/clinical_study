@@ -5,7 +5,6 @@ This project is a simple ETL (Extract, Transform, Load) pipeline for processing 
 ## Project Structure
 
 test_data_engineer/
-│
 ├── .env # Environment variables (database credentials)
 ├── .gitignore # Files to exclude from version control
 ├── requirements.txt # Python dependencies
