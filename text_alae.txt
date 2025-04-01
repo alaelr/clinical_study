@@ -1,0 +1,9 @@
+Activate Airflow airflow_env :
+source ~/airflow_env/bin/activate 
+
+Access to postgres sql :
+psql -h localhost -p 5432 -U postgres -d postgres
+
+Acces postgres db :
+\c clinical_study  
+(view db available : \l)

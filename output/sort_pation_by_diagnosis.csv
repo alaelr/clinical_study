@@ -1,0 +1,5 @@
+patient_id,age,gender,maladie_description,visit_frequency,age_group,diagnosis
+P001,34.0,Male,Non-smoker,2,31-50,Depression
+P002,28.0,Female,Diabetic,2,18-30,Depression
+P005,29.0,Female,Obese,1,18-30,Depression
+P009,22.0,Female,Healthy,1,18-30,Depression
