@@ -2,48 +2,6 @@
 
 This project is a simple ETL (Extract, Transform, Load) pipeline for processing patient-related data. It reads multiple CSV files, cleans and transforms the data, and merges them into a final dataset.
 
-## Project Structure
-
-test_data_engineer/
-   ├── .env # Environment variables (database credentials)
-   ├── .gitignore # Files to exclude from version control
-   ├── requirements.txt # Python dependencies
-   │
-   ├── airflow/ # Airflow DAGs directory
-   │ └── dags/
-   │ └── clinical_etl_pipeline.py # Main Airflow pipeline
-   │
-   ├── data/ # Raw input data files
-   │ ├── patient_demographics.csv
-   │ ├── patient_lab_results.csv
-   │ ├── patient_medications.csv
-   │ ├── patient_visits.csv
-   │ └── physician_assignments.csv
-   │
-   ├── output/ # Processed output files
-   │ └── cleaned_patient_data.csv
-   │
-   ├── scripts/ # Data processing scripts
-   │ ├── init.py # Python package marker
-   │ ├── config.py # Configuration settings
-   │ ├── etl.py # ETL transformation logic
-   │ ├── load_postgresql.py # PostgreSQL loader
-   │ ├── migrate_to_supabase.py # Supabase migration
-   │ ├── query_executor.py # Query execution helper
-   │ ├── query_postgresql.py # PostgreSQL query interface
-   │ ├── schema_postgresql.sql # Database schema definition
-   │ └── test_queries.py # Database tests
-   │
-   ├── sql_queries/ # Business intelligence queries
-   │ ├── sort_patient_by_diagnosis.sql
-   │ ├── visits_for_patient.sql
-   │ └── visits_per_month.sql
-   │
-   ├── supabase/ # Supabase-specific files
-   │ ├── DIFFERENCES.md # PostgreSQL vs Supabase notes
-   │ └── README.md # Supabase setup guide
-   │
-   └── .pytest_cache/ # Pytest cache (auto-generated)
 
 ## Setup Instructions
 
